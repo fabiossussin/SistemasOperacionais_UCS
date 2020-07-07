@@ -12,11 +12,16 @@ namespace Ucs_SO.Writer
     class CsvWriter
     {
         private string FileExtension = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) }\\outputContent.csv";
-        private List<Organism> fileSorted = new List<Organism>();
+        private static List<Organism> fileSorted = new List<Organism>();
         public void WriterFile(List<Organism> newFile)
         {
-            var thread = new Thread(() => SortNewFile(newFile));
-            thread.Start();
+
+            var task = Task.Run(() =>
+            {
+                this.SortNewFile(newFile);
+            });
+
+            task.Wait();
 
             using (var file = new StreamWriter(this.FileExtension))
                 foreach (var line in fileSorted)
@@ -25,7 +30,7 @@ namespace Ucs_SO.Writer
         }
 
         private void SortNewFile(List<Organism> newFile) =>
-            this.fileSorted = newFile.OrderBy(x => x.GeneName).ThenBy(x => x.Name).ToList();
+            fileSorted = newFile.OrderBy(x => x.GeneName).ThenBy(x => x.Name).ToList();
 
     }
 }
