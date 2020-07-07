@@ -15,13 +15,10 @@ namespace Ucs_SO.Writer
         private static List<Organism> fileSorted = new List<Organism>();
         public void WriterFile(List<Organism> newFile)
         {
-
-            var task = Task.Run(() =>
+            Task.Run(() =>
             {
                 this.SortNewFile(newFile);
-            });
-
-            task.Wait();
+            }).Wait();
 
             using (var file = new StreamWriter(this.FileExtension))
                 foreach (var line in fileSorted)
