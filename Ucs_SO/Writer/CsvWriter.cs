@@ -11,7 +11,7 @@ namespace Ucs_SO.Writer
 {
     class CsvWriter
     {
-        private string FileExtension = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) }\\outputContent.csv";
+        private string FileExtension = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) }\\LeitorCSV\\outputContent.csv";
         private static List<Organism> fileSorted = new List<Organism>();
         public void WriterFile(List<Organism> newFile)
         {

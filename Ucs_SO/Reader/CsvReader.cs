@@ -12,7 +12,7 @@ namespace Ucs_SO.Reader
     public class CsvReader
     {
 
-        private string FileExtension = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) }\\intergenidb.csv";
+        private string FileExtension = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) }\\LeitorCSV\\intergenidb.csv";
 
         public void FileReader()
         {
